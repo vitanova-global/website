@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitaNova | Sistema de Continuidad Humana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --accent-emerald: #10B981;
+            --text-main: #FFFFFF;
+            --text-muted: #888888;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden;
+        }
+
+        /* Fondo de Lujo Invisible */
+        .glow-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.07), transparent 70%);
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+        }
+
+        .brand {
+            font-weight: 300;
+            letter-spacing: 0.8rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: var(--accent-emerald);
+            margin-bottom: 4rem;
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-weight: 100;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.05;
+            margin-bottom: 2rem;
+            letter-spacing: -0.1rem;
+        }
+
+        p {
+            font-weight: 300;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Botón de Activación */
+        .cta-btn {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: var(--accent-emerald);
+            padding: 1.2rem 3rem;
+            border-radius: 2px; /* Estética minimalista */
+            font-size: 0.8rem;
+            letter-spacing: 0.3rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .cta-btn:hover {
+            background: var(--accent-emerald);
+            color: #000;
+            border-color: var(--accent-emerald);
+            box-shadow: 0 0 50px rgba(16, 185, 129, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            font-size: 0.6rem;
+            letter-spacing: 0.4rem;
+            color: #222;
+            text-transform: uppercase;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+
+    <div class="content">
+        <div class="brand">VitaNova</div>
+        <h1>Tu vida está lista para ser rediseñada.</h1>
+        <p>Detectamos señales invisibles de interrupción antes de que ocurran. Active su arquitectura de anticipación.</p>
+        
+        <a href="https://wa.me/573000000000?text=Hola%20VitaNova,%20quiero%20activar%20mi%20arquitectura%20de%20anticipación." class="cta-btn">
+            Verificar Continuidad
+        </a>
+    </div>
+
+    <div class="footer">
+        VN OS — BOGOTÁ MMXXVI
+    </div>
+
+</body>
+</html>
