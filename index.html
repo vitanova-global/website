@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>VitaNova | Sistema de Continuidad Humana</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&display=swap" rel="stylesheet">
     <style>
@@ -11,26 +11,26 @@
             --accent-emerald: #10B981;
             --text-main: #FFFFFF;
             --text-muted: #888888;
-            /* Definición de la Proporción Áurea */
             --golden-ratio: 1.618;
-            /* Base de diseño (puedes ajustar esta base) */
-            --base-dim: 1vh; 
+            --base-unit: 1rem;
         }
+
+        * { box-sizing: border-box; }
 
         body, html {
             margin: 0; padding: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            height: 100vh;
+            min-height: 100vh;
             display: flex; justify-content: center; align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         .glow-bg {
-            position: absolute;
+            position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.07), transparent 70%);
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08), transparent 75%);
             z-index: 1;
         }
 
@@ -38,121 +38,87 @@
             position: relative;
             z-index: 10;
             text-align: center;
-            /* Ancho del contenedor basado en la proporción áurea */
-            max-width: calc(100vw / var(--golden-ratio));
-            padding: 40px;
+            width: 90%;
+            max-width: 800px;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Contenedor del Logo con Proporción Áurea */
         .logo-container {
-            /* Altura del logo basada en la proporción áurea */
-            height: calc(12 * var(--base-dim)); 
-            width: auto;
-            /* Margen inferior basado en la proporción áurea */
-            margin-bottom: calc(12 * var(--base-dim) * var(--golden-ratio));
+            width: 100%;
+            margin-bottom: calc(var(--base-unit) * var(--golden-ratio) * 2);
             display: flex;
             justify-content: center;
-            align-items: center;
         }
 
         .logo-container img {
-            height: 100%; /* El logo llena la altura del contenedor */
-            width: auto;
-            filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.5)); /* Glow sutil */
+            width: 180px; /* Tamaño base áureo */
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.4));
         }
 
         h1 {
             font-weight: 100;
-            /* Tamaño del título basado en la proporción áurea de la base */
-            font-size: calc(6 * var(--base-dim) * var(--golden-ratio));
-            line-height: 1.05;
-            margin-top: 0;
-            /* Margen inferior basado en la proporción áurea */
-            margin-bottom: calc(6 * var(--base-dim));
-            letter-spacing: -0.1rem;
+            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            line-height: 1.1;
+            margin: 0 0 calc(var(--base-unit) * var(--golden-ratio)) 0;
+            letter-spacing: -0.05rem;
         }
 
         p {
             font-weight: 300;
             color: var(--text-muted);
-            /* Tamaño del texto basado en la base */
-            font-size: calc(2.5 * var(--base-dim));
+            font-size: clamp(1rem, 4vw, 1.2rem);
             line-height: 1.6;
-            margin-top: 0;
-            /* Margen inferior basado en la proporción áurea */
-            margin-bottom: calc(4 * var(--base-dim) * var(--golden-ratio));
-            max-width: calc(60 * var(--base-dim));
+            margin: 0 0 calc(var(--base-unit) * var(--golden-ratio) * 2) 0;
+            max-width: 500px;
         }
 
         .cta-btn {
             display: inline-block;
             background: transparent;
-            border: 1px solid rgba(16, 185, 129, 0.4);
+            border: 1px solid rgba(16, 185, 129, 0.5);
             color: var(--accent-emerald);
-            /* Padding basado en la proporción áurea */
-            padding: calc(1.5 * var(--base-dim)) calc(1.5 * var(--base-dim) * var(--golden-ratio));
-            border-radius: 2px;
-            font-size: calc(1.5 * var(--base-dim));
-            letter-spacing: 0.3rem;
+            padding: 1rem 2rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.2rem;
             text-transform: uppercase;
             text-decoration: none;
-            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .cta-btn:hover {
-            background: var(--accent-emerald);
-            color: #000;
-            border-color: var(--accent-emerald);
-            box-shadow: 0 0 50px rgba(16, 185, 129, 0.3);
-            transform: translateY(-2px);
+            transition: all 0.4s ease;
+            border-radius: 2px;
         }
 
         .footer {
             position: absolute;
-            bottom: 30px;
-            font-size: calc(1 * var(--base-dim));
-            letter-spacing: 0.4rem;
-            color: #222;
+            bottom: 1.5rem;
+            font-size: 0.6rem;
+            letter-spacing: 0.3rem;
+            color: #333;
             text-transform: uppercase;
             width: 100%;
             text-align: center;
         }
 
-        /* Ajustes para móvil */
-        @media (max-width: 768px) {
-            :root {
-                --base-dim: 1.2vh; /* Base ligeramente más grande en móvil */
-            }
-            .content {
-                max-width: 90%;
-                padding: 20px;
-            }
+        /* Ajustes específicos para móviles */
+        @media (max-width: 480px) {
+            .logo-container img { width: 140px; }
+            .content { padding: 1rem; }
+            .footer { letter-spacing: 0.1rem; }
         }
     </style>
 </head>
 <body>
-
     <div class="glow-bg"></div>
-
     <div class="content">
         <div class="logo-container">
             <img src="vn_logo-beta-1.png" alt="VitaNova Logo">
         </div>
-
         <h1>Tu vida está lista para ser rediseñada.</h1>
         <p>Detectamos señales invisibles de interrupción antes de que ocurran. Active su arquitectura de anticipación.</p>
-        
-        <a href="https://wa.me/573000000000?text=Hola%20VitaNova,%20quiero%20activar%20mi%20arquitectura%20de%20anticipación." class="cta-btn">
-            Verificar Continuidad
-        </a>
+        <a href="https://wa.me/573000000000" class="cta-btn">Verificar Continuidad</a>
     </div>
-
-    <div class="footer">
-        VN OS — BOGOTÁ MMXXVI
-    </div>
-
+    <div class="footer">VN OS — BOGOTÁ MMXXVI</div>
 </body>
 </html>
